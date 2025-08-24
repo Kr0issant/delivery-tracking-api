@@ -50,31 +50,5 @@
       "title": "value",
       "weight": "value"
     }
-  },
-  {
-    "tracking_id": "500",
-    "courier_code": "value",
-    "order_date": "value",
-    "received_date": "value",
-    "delivery_status": "reached",
-    "origin": {
-      "country": "value",
-      "state": "value",
-      "city": "value"
-    },
-    "destination": {
-      "country": "value",
-      "state": "value",
-      "city": "value"
-    },
-    "customer": {
-      "name": "value",
-      "email": "value",
-      "phone": "value"
-    },
-    "product": {
-      "title": "value",
-      "weight": "value"
-    }
   }
 ]

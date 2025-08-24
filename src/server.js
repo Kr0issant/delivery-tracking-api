@@ -35,7 +35,7 @@ app.use(cors());  // CORS middleware
 
 // API Authentication Middleware
 app.use((req, res, next) => {
-    if (req.originalUrl.includes("track-get")) {
+    if (req.method === "GET") {
         return next();  // Skip API key check for public GET endpoint
     }
     const apiKeyHeader = req.headers['x-api-key'];
@@ -48,7 +48,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));  // Body Parser middleware
 
-app.get("/track-get", async (req, res) => {
+app.get("/track", async (req, res) => {
     let trackings = await readFile("trackings.json");
     const foundTracking = trackings.find(i => req.query.tracking_id === i.tracking_id);
 
@@ -56,7 +56,7 @@ app.get("/track-get", async (req, res) => {
     else { res.status(404).send("Cannot find entry with specified ID."); }
 });
 
-app.post("/track-post", async (req, res) => {
+app.post("/track", async (req, res) => {
     let trackings = await readFile("trackings.json");
     const foundTracking = trackings.find(i => req.query.tracking_id === i.tracking_id);
     
@@ -68,7 +68,7 @@ app.post("/track-post", async (req, res) => {
     }
 });
 
-app.put("/track-put", async (req, res) => {
+app.put("/track", async (req, res) => {
     let trackings = await readFile("trackings.json");
     const foundTracking = trackings.find(i => req.query.tracking_id === i.tracking_id);
 
@@ -84,7 +84,7 @@ app.put("/track-put", async (req, res) => {
     else { res.status(404).send("Cannot find entry with specified ID."); }
 });
 
-app.delete("/track-delete", async (req, res) => {
+app.delete("/track", async (req, res) => {
     let trackings = await readFile("trackings.json");
     const foundTracking = trackings.find(i => req.query.tracking_id === i.tracking_id);
 
